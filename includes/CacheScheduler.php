@@ -36,6 +36,7 @@ class CacheScheduler {
 	 * last parsed, not at a fixed clock time. Use cacheuntil for that.
 	 */
 	public function cacheDaily( Parser $parser ): string {
+		// @phan-suppress-next-line PhanDeprecatedFunction $source is passed, only the sourceless call is deprecated
 		$parser->getOutput()->updateCacheExpiry( $this->withMinimum( self::SECONDS_PER_DAY ), 'cachedaily' );
 		return '';
 	}
@@ -55,6 +56,7 @@ class CacheScheduler {
 
 		$seconds = $this->secondsUntilNextTime( $times );
 		if ( $seconds !== null ) {
+			// @phan-suppress-next-line PhanDeprecatedFunction $source is passed, only the sourceless call is deprecated
 			$parser->getOutput()->updateCacheExpiry( $this->withMinimum( $seconds ), 'cacheuntil' );
 		}
 
@@ -69,6 +71,7 @@ class CacheScheduler {
 	public function cacheInterval( Parser $parser, string $seconds = '' ): string {
 		$seconds = (int)$seconds;
 		if ( $seconds > 0 ) {
+			// @phan-suppress-next-line PhanDeprecatedFunction $source is passed, only the sourceless call is deprecated
 			$parser->getOutput()->updateCacheExpiry( $this->withMinimum( $seconds ), 'cacheinterval' );
 		}
 
@@ -94,7 +97,7 @@ class CacheScheduler {
 			$candidate = clone $now;
 			$candidate->setTime( (int)$m[1], (int)$m[2], 0 );
 
-			if ( $candidate <= $now ) {
+			if ( $candidate->getTimestamp() <= $now->getTimestamp() ) {
 				$candidate->modify( '+1 day' );
 			}
 
