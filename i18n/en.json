@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Your Name"
+			"Universal Omega"
 		]
 	},
 	"magiccacheschedule-desc": "Adds {{#cachedaily}}, {{#cacheuntil}}, and {{#cacheinterval}} parser functions so pages can invalidate their cache on a schedule instead of disabling caching entirely"
