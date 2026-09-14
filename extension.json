@@ -1,0 +1,51 @@
+{
+	"name": "MagicCacheSchedule",
+	"version": "1.0.0",
+	"author": [
+		"Universal Omega"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:MagicCacheSchedule",
+	"descriptionmsg": "magiccacheschedule-desc",
+	"namemsg": "magiccacheschedule-extensionname",
+	"license-name": "GPL-3.0-or-later",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.46.0"
+	},
+	"MessagesDirs": {
+		"MagicCacheSchedule": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"MagicCacheScheduleMagic": "MagicCacheSchedule.i18n.magic.php"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\MagicCacheSchedule\\": "includes/"
+	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\MagicCacheSchedule\\Hooks",
+			"services": [
+				"MagicCacheSchedule.CacheScheduler"
+			]
+		}
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "main"
+	},
+	"config": {
+		"MagicCacheScheduleMinimumExpiry": {
+			"value": 60,
+			"description": "Floor, in seconds, under which none of the parser functions are allowed to push the cache expiry. Guards against a page setting cacheinterval too low and thrashing the parser cache."
+		},
+		"MagicCacheScheduleTimezone": {
+			"value": "UTC",
+			"description": "Timezone used when resolving clock times for cacheuntil, for example America/New_York or UTC."
+		}
+	},
+	"manifest_version": 2
+}
