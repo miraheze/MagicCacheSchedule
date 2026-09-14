@@ -1,0 +1,44 @@
+{
+	"name": "miraheze/magic-cache-schedule",
+	"type": "mediawiki-extension",
+	"description": "Adds {{#cachedaily}}, {{#cacheuntil}}, and {{#cacheinterval}} parser functions so pages can invalidate their cache on a schedule instead of disabling caching entirely.",
+	"homepage": "https://www.mediawiki.org/wiki/Extension:MagicCacheSchedule",
+	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "Universal Omega"
+		}
+	],
+	"require": {
+		"composer/installers": ">=1.0.1"
+	},
+	"require-dev": {
+		"mediawiki/mediawiki-codesniffer": "52.0.1",
+		"mediawiki/mediawiki-phan-config": "0.20.0",
+		"mediawiki/minus-x": "2.0.1",
+		"miraheze/phan-plugins": "0.3.0",
+		"php-parallel-lint/php-console-highlighter": "1.0.0",
+		"php-parallel-lint/php-parallel-lint": "1.4.0"
+	},
+	"scripts": {
+		"fix": [
+			"minus-x fix .",
+			"phpcbf; if [ $? -eq 1 ]; then exit 0; fi"
+		],
+		"test": [
+			"parallel-lint . --exclude node_modules --exclude vendor",
+			"minus-x check .",
+			"@phpcs"
+		],
+		"phan": "phan -d . --long-progress-bar",
+		"phpcs": "phpcs -sp --cache"
+	},
+	"config": {
+		"prepend-autoloader": false,
+		"optimize-autoloader": true,
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}
