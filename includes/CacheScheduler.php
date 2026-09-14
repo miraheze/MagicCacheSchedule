@@ -18,8 +18,8 @@ use function preg_match;
 class CacheScheduler {
 
 	public const array CONSTRUCTOR_OPTIONS = [
-		ConfigNames::Timezone,
 		ConfigNames::MinimumExpiry,
+		ConfigNames::Timezone,
 	];
 
 	private const int SECONDS_PER_DAY = 86400;
@@ -71,6 +71,7 @@ class CacheScheduler {
 		if ( $seconds > 0 ) {
 			$parser->getOutput()->updateCacheExpiry( $this->withMinimum( $seconds ), 'cacheinterval' );
 		}
+
 		return '';
 	}
 
@@ -85,7 +86,6 @@ class CacheScheduler {
 	private function secondsUntilNextTime( array $times ): ?int {
 		$now = new DateTime( 'now', $this->getTimezone() );
 		$soonest = null;
-
 		foreach ( $times as $time ) {
 			if ( !preg_match( '/^([01]?\d|2[0-3]):([0-5]\d)$/', $time, $m ) ) {
 				continue;
@@ -109,10 +109,9 @@ class CacheScheduler {
 
 	private function getTimezone(): DateTimeZone {
 		$tzName = $this->options->get( ConfigNames::Timezone );
-
 		try {
 			return new DateTimeZone( $tzName );
-		} catch ( Exception $e ) {
+		} catch ( Exception ) {
 			return new DateTimeZone( 'UTC' );
 		}
 	}
