@@ -57,6 +57,7 @@ class CacheScheduler {
 		if ( $seconds !== null ) {
 			$parser->getOutput()->updateCacheExpiry( $this->withMinimum( $seconds ), 'cacheuntil' );
 		}
+
 		return '';
 	}
 
