@@ -1,7 +1,7 @@
 {
 	"name": "miraheze/scheduled-cache-expiry",
 	"type": "mediawiki-extension",
-	"description": "Adds {{#cachedaily}}, {{#cacheuntil}}, and {{#cacheinterval}} parser functions so pages can invalidate their cache on a schedule instead of disabling caching entirely.",
+	"description": "Adds {{#cachedaily}}, {{#cacheuntil}}, and {{#cacheinterval}} parser functions so pages can invalidate their cache on a schedule.",
 	"homepage": "https://www.mediawiki.org/wiki/Extension:ScheduledCacheExpiry",
 	"license": "GPL-3.0-or-later",
 	"authors": [
