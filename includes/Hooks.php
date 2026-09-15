@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace MediaWiki\Extension\MagicCacheSchedule;
+namespace MediaWiki\Extension\ScheduledCacheExpiry;
 
 use MediaWiki\Parser\Hook\ParserFirstCallInitHook;
 

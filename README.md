@@ -1,1 +1,1 @@
-# MagicCacheSchedule
+# ScheduledCacheExpiry
