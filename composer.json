@@ -1,8 +1,8 @@
 {
-	"name": "miraheze/magic-cache-schedule",
+	"name": "miraheze/scheduled-cache-expiry",
 	"type": "mediawiki-extension",
 	"description": "Adds {{#cachedaily}}, {{#cacheuntil}}, and {{#cacheinterval}} parser functions so pages can invalidate their cache on a schedule instead of disabling caching entirely.",
-	"homepage": "https://www.mediawiki.org/wiki/Extension:MagicCacheSchedule",
+	"homepage": "https://www.mediawiki.org/wiki/Extension:ScheduledCacheExpiry",
 	"license": "GPL-3.0-or-later",
 	"authors": [
 		{
